@@ -1,9 +1,8 @@
 import sqlite3
 
 
-caminho_banco = r"C:\Users\Vini\.node-red\motos.db"
 
-conexao = sqlite3.connect(caminho_banco)
+conexao = sqlite3.connect()
 cursor = conexao.cursor()
 
 cursor.execute("""
