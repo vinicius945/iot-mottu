@@ -1,4 +1,4 @@
-oT Mottu - Projeto de Monitoramento
+IoT Mottu - Projeto de Monitoramento
 📝 Proposta e Funcionalidades
 Este projeto consiste em um sistema de monitoramento de IoT para motocicletas, desenvolvido como parte do Challenge da FIAP. A solução utiliza um simulador de hardware (Wokwi) para coletar dados de telemetria em tempo real, que são enviados via protocolo MQTT para um dashboard de monitoramento (Node-RED).
 
