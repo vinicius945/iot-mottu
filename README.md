@@ -10,25 +10,10 @@ Visualização Interativa: O dashboard no Node-RED exibe a telemetria em tempo r
 
 Persistência de Dados: Todos os dados de telemetria são armazenados em um banco de dados SQLite, garantindo que o histórico de informações seja salvo para análise posterior.
 
-📁 Estrutura de Pastas
-A estrutura do projeto está organizada para facilitar a navegação e a compreensão de cada componente da solução:
-
-iot-mottu/
-|-- c_plus_plus/
-|   `-- main.cpp  # Código do ESP32 no Wokwi
-|-- node_red/
-|   `-- fluxo.json # JSON do fluxo do Node-RED
-|-- docs/
-|   `-- relatorio_sprint3.pdf # PDF de entrega da sprint
-|-- videos/
-|   `-- video_demonstracao.mp4 # Vídeo da demonstração do projeto
-|-- .gitignore
-|-- README.md
-🔗 Link do Repositório GitHub
-URL do Repositório: https://github.com/vinicius945/iot-mottu
 
 👩‍💻 Integrantes do Grupo
-Nome	RM	GitHub
-Vinicius	[Seu RM]	https://github.com/vinicius945
-[Nome do Integrante 2]	[RM do Integrante 2]	[Link do GitHub do Integrante 2]
-[Nome do Integrante 3]	[RM do Integrante 3]	[Link do GitHub do Integrante 3]
+Enzo Prado Soddano — RM557937
+
+Lucas Resende Lima — RM556564
+
+Vinicius Prates Altafini — RM556183]
