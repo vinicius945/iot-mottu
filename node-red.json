@@ -1,0 +1,338 @@
+[
+    {
+        "id": "0883ea3d170116e7",
+        "type": "tab",
+        "label": "Flow 6",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "c8758a4ced551697",
+        "type": "tab",
+        "label": "Monitoramento IoT",
+        "disabled": false
+    },
+    {
+        "id": "tab",
+        "type": "ui_tab",
+        "name": "Monitoramento",
+        "icon": "dashboard"
+    },
+    {
+        "id": "grupo",
+        "type": "ui_group",
+        "name": "Dashboard Moto",
+        "tab": "tab",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "3b9e1608e8294a7f",
+        "type": "mqtt-broker",
+        "name": "HiveMQ Broker",
+        "broker": "broker.hivemq.com",
+        "port": 1883,
+        "clientid": "node-red-mqtt",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "sqlite-db",
+        "type": "sqlitedb",
+        "db": "motos.db",
+        "mode": "RWC"
+    },
+    {
+        "id": "cdacf358288eea7a",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "18a3a48d8c4317f2",
+        "type": "mqtt in",
+        "z": "c8758a4ced551697",
+        "name": "Receber dados MQTT",
+        "topic": "motos/telemetria",
+        "qos": "0",
+        "datatype": "string",
+        "broker": "3b9e1608e8294a7f",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 120,
+        "y": 140,
+        "wires": [
+            [
+                "629e3d6efa223624",
+                "aa1c8d6598e5a5d4"
+            ]
+        ]
+    },
+    {
+        "id": "629e3d6efa223624",
+        "type": "function",
+        "z": "c8758a4ced551697",
+        "name": "Processar Dados",
+        "func": "try {\n    const data = JSON.parse(msg.payload);\n    const msgDistancia = { payload: data.distancia };\n    const msgEstado = { payload: data.estado };\n    return [msgDistancia, msgEstado];\n} catch (e) {\n    node.warn(\"Erro ao parsear JSON: \" + e.message);\n    return null;\n}",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 140,
+        "wires": [
+            [
+                "5b301dea1f5ae265",
+                "b6709594fceb2824"
+            ],
+            [
+                "3299d47ac1440e49"
+            ]
+        ]
+    },
+    {
+        "id": "aa1c8d6598e5a5d4",
+        "type": "function",
+        "z": "c8758a4ced551697",
+        "name": "Formatar SQL",
+        "func": "try {\n    const data = JSON.parse(msg.payload);\n    msg.topic = \"INSERT INTO historico (distancia, estado, busca, timestamp) VALUES (?,?,?,?)\";\n    msg.payload = [\n        data.distancia,\n        data.estado,\n        data.busca,\n        data.timestamp\n    ];\n    return msg;\n} catch (e) {\n    node.warn(\"Erro ao preparar dados para SQL: \" + e.message);\n    return null;\n}",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "x": 400,
+        "y": 220,
+        "wires": [
+            [
+                "65c4188e2767788f",
+                "effbad1c0a82b5ab"
+            ]
+        ]
+    },
+    {
+        "id": "3299d47ac1440e49",
+        "type": "ui_text",
+        "z": "c8758a4ced551697",
+        "group": "grupo",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "name": "Estado Moto",
+        "label": "Status da Moto",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 610,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "5b301dea1f5ae265",
+        "type": "ui_chart",
+        "z": "c8758a4ced551697",
+        "name": "Gráfico Distância",
+        "group": "grupo",
+        "order": 2,
+        "width": 6,
+        "height": 4,
+        "label": "Distância (cm)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "0",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": "",
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4"
+        ],
+        "outputs": 1,
+        "x": 610,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b6709594fceb2824",
+        "type": "ui_gauge",
+        "z": "c8758a4ced551697",
+        "name": "Distância Atual",
+        "group": "grupo",
+        "order": 3,
+        "width": 6,
+        "height": 2,
+        "gtype": "gage",
+        "title": "Distância Atual (cm)",
+        "label": "cm",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 100,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 600,
+        "y": 190,
+        "wires": []
+    },
+    {
+        "id": "65c4188e2767788f",
+        "type": "sqlite",
+        "z": "c8758a4ced551697",
+        "mydb": "sqlite-db",
+        "name": "Banco motos.db",
+        "x": 600,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "effbad1c0a82b5ab",
+        "type": "debug",
+        "z": "c8758a4ced551697",
+        "name": "Dados para o Banco",
+        "active": true,
+        "tosidebar": true,
+        "complete": "true",
+        "x": 600,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "fb5275211c7293e5",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6",
+            "node-red-node-sqlite": "1.1.1"
+        }
+    }
+]
