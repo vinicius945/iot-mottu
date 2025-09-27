@@ -86,24 +86,21 @@ void loop() {
   }
   client.loop();
 
-  // Leitura dos sensores
   float distancia = medirDistancia();
   String estadoMoto = (distancia < 20) ? "moto_presente" : "moto_ausente";
   bool buscaAtiva = (digitalRead(botaoBusca) == LOW);
 
-  // Controle dos LEDs
   digitalWrite(ledAlarme, distancia >= 20);
   digitalWrite(ledTrava, distancia < 20);
   digitalWrite(ledNotificacao, distancia >= 20);
 
-  // Cria um objeto JSON na memória
   StaticJsonDocument<200> doc;
-  doc["timestamp"] = String(millis()/1000) + "s";
+  doc["timestamp"] = String(millis()/1000); // Removido o "s"
   doc["distancia"] = distancia;
   doc["estado"] = estadoMoto;
   doc["busca"] = buscaAtiva;
+  doc["dispositivo"] = "MotoB"; // <-- Linha adicionada
 
-  // Serializa o JSON para uma string
   char jsonBuffer[200];
   serializeJson(doc, jsonBuffer, sizeof(jsonBuffer));
 
