@@ -1,6 +1,8 @@
 IoT Mottu - Projeto de Monitoramento de Telemetria
+
 📝 Proposta e Funcionalidades
 Este projeto implementa uma solução de monitoramento de Internet das Coisas (IoT) para motocicletas, seguindo os requisitos do Challenge de Análise e Desenvolvimento de Sistemas da FIAP. O sistema foi projetado para capturar, processar e persistir dados de telemetria em tempo real.
+
 
 A arquitetura da solução é composta pelos seguintes módulos e funcionalidades:
 
