@@ -11,8 +11,10 @@ Coleta e Visualização em Tempo Real: O Node-RED recebe os dados via MQTT e os 
 Persistência de Dados: Todos os dados de telemetria são armazenados em um banco de dados MySQL, garantindo que o histórico de informações seja salvo para análise posterior.
 
 👩‍💻 Integrantes do Grupo
+
 Enzo Prado Soddano — RM557937
-
 Lucas Resende Lima — RM556564
-
 Vinicius Prates Altafini — RM556183
+
+Link do projeto no workwi: https://wokwi.com/projects/442734327702711297
+Link do video: https://youtu.be/3Dg2IjTPFjQ
