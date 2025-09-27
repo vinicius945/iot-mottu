@@ -95,11 +95,11 @@ void loop() {
   digitalWrite(ledNotificacao, distancia >= 20);
 
   StaticJsonDocument<200> doc;
-  doc["timestamp"] = String(millis()/1000); // Removido o "s"
+  doc["timestamp"] = String(millis()/1000); 
   doc["distancia"] = distancia;
   doc["estado"] = estadoMoto;
   doc["busca"] = buscaAtiva;
-  doc["dispositivo"] = "MotoB"; // <-- Linha adicionada
+  doc["dispositivo"] = "MotoB"; 
 
   char jsonBuffer[200];
   serializeJson(doc, jsonBuffer, sizeof(jsonBuffer));

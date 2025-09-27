@@ -4,12 +4,12 @@ import time
 import random
 from datetime import datetime
 
-# Configurações do Broker MQTT
+
 BROKER = "broker.hivemq.com"
 PORT = 1883
 TOPIC = "motos/telemetria"
 
-# Lista de dispositivos a serem simulados
+
 dispositivos = ["moto1", "moto2", "moto3"]
 
 def on_connect(client, userdata, flags, rc):
@@ -29,16 +29,16 @@ def simular_dados():
     client.on_connect = on_connect
     client.on_publish = on_publish
     
-    # Conecta ao broker
+  
     client.connect(BROKER, PORT, 60)
     
-    # Inicia um loop em segundo plano para manter a conexão
+   
     client.loop_start()
 
     try:
         while True:
             for dispositivo in dispositivos:
-                # Gera dados aleatórios
+                
                 distancia = round(random.uniform(0.0, 100.0), 2)
                 estado = "Normal"
                 if distancia > 80:
@@ -46,9 +46,9 @@ def simular_dados():
                 elif distancia < 20:
                     estado = "Perigo"
                 
-                busca = bool(random.getrandbits(1)) # True ou False
+                busca = bool(random.getrandbits(1)) 
                 
-                # Cria a carga de dados no formato JSON
+                
                 payload = {
                     "dispositivo": dispositivo,
                     "distancia": distancia,
@@ -57,14 +57,14 @@ def simular_dados():
                     "busca": busca
                 }
                 
-                # Converte o dicionário para uma string JSON
+                
                 payload_json = json.dumps(payload)
                 
-                # Publica a mensagem no tópico
+                
                 print(f"Enviando para {dispositivo}: {payload_json}")
                 client.publish(TOPIC, payload_json, qos=0)
             
-            # Espera 5 segundos para a próxima rodada de envio
+           
             time.sleep(5)
             
     except KeyboardInterrupt:
