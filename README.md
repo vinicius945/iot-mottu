@@ -1,5 +1,7 @@
 IoT Mottu - Projeto de Monitoramento
+
 📝 Proposta e Funcionalidades
+
 Este projeto consiste em um sistema de monitoramento de IoT para motocicletas, desenvolvido como parte do Challenge da FIAP. A solução utiliza um simulador em Python para gerar e enviar dados de telemetria em tempo real, que são enviados via protocolo MQTT para um dashboard de monitoramento (Node-RED).
 
 As principais funcionalidades do sistema incluem:
@@ -16,5 +18,9 @@ Enzo Prado Soddano — RM557937
 Lucas Resende Lima — RM556564
 Vinicius Prates Altafini — RM556183
 
+<<<<<<< HEAD
 Link do projeto no workwi: https://wokwi.com/projects/442734327702711297
 Link do video: https://youtu.be/3Dg2IjTPFjQ
+=======
+Vinicius Prates Altafini — RM556183
+>>>>>>> 36de72c2ecb9e46a10900a56a57cc649c4e92ac7
