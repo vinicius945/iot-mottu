@@ -42,6 +42,29 @@ v                      v
 
 
 
+---
+
+## ⚙️ Componentes Físicos (Hardware IoT)
+Embora a simulação seja feita via software, o projeto foi concebido para integração com os seguintes componentes físicos:
+
+* **Sensor de Distância Ultrassônico:** Atua como o principal sensor do sistema, medindo a distância de obstáculos. Esta métrica é a base da telemetria e informa o estado de alerta da moto.
+* **LEDs (Indicadores Visuais):** Utilizados como atuadores visuais para feedback instantâneo. Eles acendem em cores diferentes para indicar o estado da moto: verde para condições normais, amarelo para alerta e vermelho para perigo.
+* **Resistores:** Componentes passivos essenciais para a proteção do circuito, limitando a corrente elétrica que passa pelos LEDs e prevenindo danos por sobrecarga.
+
+---
+
+## 👩‍💻 Integrantes do Grupo
+* **Enzo Prado Soddano** — RM557937
+* **Lucas Resende Lima** — RM556564
+* **Vinicius Prates Altafini** — RM556183
+
+---
+
+## 🔗 Links do Projeto
+* **Link do projeto no Wokwi:** `https://wokwi.com/projects/442734327702711297`
+* **Link do video:** `https://youtu.be/3Dg2IjTPFjQ`
+
+
 
 
 
