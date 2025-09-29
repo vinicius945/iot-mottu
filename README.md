@@ -22,20 +22,30 @@ O fluxo de dados opera da seguinte forma:
 2.  **Processamento e Visualização:** A plataforma **Node-RED** atua como **subscriber**, recebendo as mensagens do Broker. O fluxo de trabalho processa os dados, exibe-os em um **Dashboard** interativo e os encaminha para a camada de persistência.
 3.  **Persistência e Consulta:** O **Banco de Dados MySQL** armazena todos os registros de telemetria.
 
-
+##Arquitetura
 ```mermaid
-+----------------+      +--------------+      +----------------+
-| Dispositivo    |  --> | Broker MQTT  |  --> | Node-RED       |
-| (Simulador)    |      | (HiveMQ)     |      | (Dashboard)    |
-+----------------+      +--------------+      +----------------+
-|                      |
-v                      v
-(Inserção de Dados)    (Consulta de Dados)
-|                      |
-v                      v
-+----------------------+
-| Banco de Dados MySQL |
-+----------------------+
+graph TD;
+
+graph TD;
+    subgraph Fluxo de Dados
+    A[Dispositivo (Simulador)] --> B[Broker MQTT (HiveMQ)];
+    B --> C{Node-RED};
+    C --> D(Dashboard);
+    C --> E(MySQL Database);
+    end
+
+    subgraph Dashboard
+    C --> F(UI Table);
+    end
+
+    subgraph Persistência
+    C --> G(Inserção de Dados);
+    G --> E;
+    end
+    
+    subgraph Consulta
+    F --> E(SELECT);
+    end
 
 
 ```
