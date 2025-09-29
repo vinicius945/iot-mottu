@@ -23,7 +23,7 @@ O fluxo de dados opera da seguinte forma:
 3.  **Persistência e Consulta:** O **Banco de Dados MySQL** armazena todos os registros de telemetria.
 
 
-
+```mermaid
 +----------------+      +--------------+      +----------------+
 | Dispositivo    |  --> | Broker MQTT  |  --> | Node-RED       |
 | (Simulador)    |      | (HiveMQ)     |      | (Dashboard)    |
@@ -38,7 +38,7 @@ v                      v
 +----------------------+
 
 
-
+```
 
 
 
