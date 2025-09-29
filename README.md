@@ -23,8 +23,6 @@ O fluxo de dados opera da seguinte forma:
 3.  **Persistência e Consulta:** O **Banco de Dados MySQL** armazena todos os registros de telemetria.
 
 ##Arquitetura
-```mermaid
-graph TD;
 
 graph TD;
     subgraph Fluxo de Dados
@@ -46,9 +44,6 @@ graph TD;
     subgraph Consulta
     F --> E(SELECT);
     end
-
-
-```
 
 
 
