@@ -32,11 +32,11 @@ graph TD;
    NodeRED["Node-RED"]
    Dashboard["Dashboard web"]
 
-   ESP32 -->|Publica dados| MQTT
-   Python["Python Simulator"] -->|Teste com 3 simuladores IOT ao mesmo tempo | ESP32
-   MQTT -->| Manda os dados| NodeRED
-   NodeRED -->| Trata os dados e os dispõe em um dashboard
-   NodeRED -->| Guarda os dados| Database
+   ESP32 -->|Publica dados|MQTT
+   Python["Python Simulator"] -->|Teste com 3 simuladores IOT ao mesmo tempo|ESP32
+   MQTT -->|Manda os dados| NodeRED
+   NodeRED -->|Trata os dados e os dispõe em um dashboard|Dashboard
+   NodeRED -->|Guarda os dados|Database
 
 ```
 ---
