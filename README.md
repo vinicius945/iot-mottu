@@ -36,7 +36,7 @@ graph TD;
    Python["Python Simulator"] -->|Teste com 3 simuladores IOT ao mesmo tempo|ESP32
    MQTT -->|Manda os dados| NodeRED
    NodeRED -->|Trata os dados e os dispõe em um dashboard|Dashboard
-   NodeRED -->|Guarda os dados|Database
+   NodeRED -->|Guarda os dados|DATABASE
 
 ```
 ---
