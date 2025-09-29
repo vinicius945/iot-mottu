@@ -24,29 +24,21 @@ O fluxo de dados opera da seguinte forma:
 
 ##Arquitetura
 
+```mermaid
 graph TD;
-    subgraph Fluxo de Dados
-    A[Dispositivo (Simulador)] --> B[Broker MQTT (HiveMQ)];
-    B --> C{Node-RED};
-    C --> D(Dashboard);
-    C --> E(MySQL Database);
-    end
+   DATABASE["MYSQL"]
+   ESP32["ESP32 + Sensores"]
+   MQTT["Broker MQTT (HiveMQ)"]
+   NodeRED["Node-RED"]
+   Dashboard["Dashboard web"]
 
-    subgraph Dashboard
-    C --> F(UI Table);
-    end
+   ESP32 -->|Publica dados| MQTT
+   Python["Python Simulator"] -->|Teste com 3 simuladores IOT ao mesmo tempo | ESP32
+   MQTT -->| Manda os dados| NodeRED
+   NodeRED -->| Trata os dados e os dispõe em um dashboard
+   NodeRED -->| Guarda os dados| Database
 
-    subgraph Persistência
-    C --> G(Inserção de Dados);
-    G --> E;
-    end
-    
-    subgraph Consulta
-    F --> E(SELECT);
-    end
-
-
-
+```
 ---
 
 ## ⚙️ Componentes Físicos (Hardware IoT)
