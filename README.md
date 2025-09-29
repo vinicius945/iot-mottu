@@ -24,6 +24,19 @@ O fluxo de dados opera da seguinte forma:
 
 
 
++----------------+      +--------------+      +----------------+
+| Dispositivo    |  --> | Broker MQTT  |  --> | Node-RED       |
+| (Simulador)    |      | (HiveMQ)     |      | (Dashboard)    |
++----------------+      +--------------+      +----------------+
+|                      |
+v                      v
+(Inserção de Dados)    (Consulta de Dados)
+|                      |
+v                      v
++----------------------+
+| Banco de Dados MySQL |
++----------------------+
+
 
 
 
